@@ -9,7 +9,7 @@
   <a href="https://tuguidragos.com"><img src="https://img.shields.io/badge/visit-tuguidragos.com-blue?style=flat-square&logo=google-chrome" alt="Website"></a>
 </p>
 
-<h1 align="center">Turn Leads into Appointments on Autopilot: The Ultimate AI Call Agent for GoHighLevel</h1>
+<h1 align="center">Turn Leads into Appointments on Autopilot: The Ultimate AI Call Agent for GoHighLevel | Updated April 2026</h1>
 
 <p align="center">
   <a href="https://tuguidragos.gumroad.com/l/ghl-n8n-vapi-ai-calling-agent">
@@ -17,6 +17,51 @@
   </a>
 </p>
 
+---
+ 
+## n8n v2 Compatibility Update
+ 
+Full migration to n8n v2 with updated APIs, error handling, and documentation.
+ 
+### Added
+ 
+- **Error handling with retry** on all 6 HTTP Request nodes
+  - `retryOnFail: true` with configurable `maxTries` (3-5 depending on node)
+  - `onError: continueRegularOutput` to prevent workflow crashes on transient API failures
+  - `waitBetweenTries` configured per node (2000-5000ms)
+- **8 professional sticky notes** inside the workflow with per-node documentation
+- **Quick Setup Guide** sticky note listing every field that requires credentials, node by node
+- **Changelog** sticky note inside the workflow
+ 
+### Changed
+ 
+- **GHL Contacts API migrated** from deprecated `GET /contacts` to `POST /contacts/search`
+  - Affects nodes: `GHL Paginated Request` and `GHL Paginated Updated`
+  - Old pagination (cursor-based via `startAfter`/`startAfterId`) replaced with page-based (`meta.nextPage`)
+  - Request body now includes `locationId`, `pageLimit`, and `page`
+- **All HTTP Request nodes** upgraded from `typeVersion 4.2` to `4.4`
+  - Nodes: Step 1 - Create Customer, Step 2 - Initiate Call, Step 3 - Get Call Data, Get Call Status from VAPI, GHL Paginated Request, GHL Paginated Updated
+- **All If nodes** upgraded from `typeVersion 2.2` to `2.3`
+  - Nodes: Has Leads to Process?, Should Continue Loop?, Step 5 - If (Call Answered?)
+- **Schedule Trigger** upgraded from `typeVersion 1.2` to `1.3`
+  - Node: Start Calls - 9AM EST
+ 
+### Fixed
+ 
+- **Critical bug in `Check Final Status + shouldContinue Logic`**.. the Code node returned data as `{count, status, shouldContinue}` (plain object), which is incompatible with n8n v2. Corrected to `[{json: {count, status, shouldContinue}}]` (proper n8n v2 item format).
+ 
+### Deprecated
+ 
+- `GET /contacts` endpoint is no longer used. GoHighLevel has marked this endpoint as deprecated and recommends `POST /contacts/search` with advanced filters.
+- GHL API Keys authentication / GoHighLevel is removing the ability to generate new API Keys. Migrate to **Private Integration Tokens** or **OAuth 2.0**.
+ 
+### Compatibility
+ 
+- **n8n**: v2.0+ (tested on v2.x, April 2026)
+- **GoHighLevel API**: v2 (Version header: 2021-07-28)
+- **Vapi API**: current stable (api.vapi.ai)
+- **Node.js**: v24+ (n8n v2 default)
+ 
 ---
 
 > Stop letting valuable leads die in your CRM. This is not just another workflow, it's a **fully autonomous AI sales agent** designed to turn your GoHighLevel contact lists into qualified, booked appointments.
