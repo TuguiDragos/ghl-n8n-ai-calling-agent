@@ -9,7 +9,7 @@
   <a href="https://tuguidragos.com"><img src="https://img.shields.io/badge/visit-tuguidragos.com-blue?style=flat-square&logo=google-chrome" alt="Website"></a>
 </p>
 
-<h1 align="center">Turn Leads into Appointments on Autopilot: The Ultimate AI Call Agent for GoHighLevel | Updated April 2026</h1>
+<h1 align="center">Turn Leads into Appointments on Autopilot: The Ultimate AI Call Agent for GoHighLevel | Updated May 2026</h1>
 
 <p align="center">
   <a href="https://tuguidragos.gumroad.com/l/ghl-n8n-vapi-ai-calling-agent">
@@ -19,27 +19,29 @@
 
 ---
  
-## n8n v2 Compatibility Update
+## MAY 2026 UPDATE - WHAT CHANGED
  
-Full migration to n8n v2 with updated APIs, error handling, and documentation.
+Full migration to n8n v2 with updated APIs, error handling, documentation, and the complete removal of complex dependencies.
  
 ### Added
- 
+
+- **Zero GHL Developer Apps Required:** We entirely removed the dependency on the native n8n GoHighLevel node. The workflow now runs purely on standard HTTP Requests using a simple GHL Private API Key (Bearer token).
+- **Auto-Mapping Custom Fields:** You no longer need to hunt down and manually paste Custom Field IDs for your Call Summaries and Recordings. The workflow features a new `18.5 Get Custom Fields` Smart Scan node that automatically reads your GHL account and maps the correct IDs dynamically.
+- **In-Canvas Interactive Tutorials:** 4 gorgeous, beginner-friendly sticky-note tutorials placed directly on the workflow canvas. Setup is now completely visual and takes minutes. 
 - **Error handling with retry** on all 6 HTTP Request nodes
   - `retryOnFail: true` with configurable `maxTries` (3-5 depending on node)
   - `onError: continueRegularOutput` to prevent workflow crashes on transient API failures
   - `waitBetweenTries` configured per node (2000-5000ms)
-- **8 professional sticky notes** inside the workflow with per-node documentation
 - **Quick Setup Guide** sticky note listing every field that requires credentials, node by node
-- **Changelog** sticky note inside the workflow
  
 ### Changed
- 
+
 - **GHL Contacts API migrated** from deprecated `GET /contacts` to `POST /contacts/search`
   - Affects nodes: `GHL Paginated Request` and `GHL Paginated Updated`
   - Old pagination (cursor-based via `startAfter`/`startAfterId`) replaced with page-based (`meta.nextPage`)
   - Request body now includes `locationId`, `pageLimit`, and `page`
-- **All HTTP Request nodes** upgraded from `typeVersion 4.2` to `4.4`
+- **GHL Notes API:** Migrated the call transcript logging to GHL's dedicated `POST /notes` endpoint for cleaner CRM profiles.
+- **All HTTP Request nodes** upgraded from `typeVersion 4.2` to `4.4` (and `4.6`)
   - Nodes: Step 1 - Create Customer, Step 2 - Initiate Call, Step 3 - Get Call Data, Get Call Status from VAPI, GHL Paginated Request, GHL Paginated Updated
 - **All If nodes** upgraded from `typeVersion 2.2` to `2.3`
   - Nodes: Has Leads to Process?, Should Continue Loop?, Step 5 - If (Call Answered?)
@@ -47,22 +49,36 @@ Full migration to n8n v2 with updated APIs, error handling, and documentation.
   - Node: Start Calls - 9AM EST
  
 ### Fixed
- 
+
+- **Vapi "Ended" Polling:** Upgraded the call status loop to accurately handle Vapi's terminal statuses, preventing infinite loops. 
 - **Critical bug in `Check Final Status + shouldContinue Logic`**.. the Code node returned data as `{count, status, shouldContinue}` (plain object), which is incompatible with n8n v2. Corrected to `[{json: {count, status, shouldContinue}}]` (proper n8n v2 item format).
  
 ### Deprecated
  
 - `GET /contacts` endpoint is no longer used. GoHighLevel has marked this endpoint as deprecated and recommends `POST /contacts/search` with advanced filters.
-- GHL API Keys authentication / GoHighLevel is removing the ability to generate new API Keys. Migrate to **Private Integration Tokens** or **OAuth 2.0**.
+- GHL API Keys authentication / GoHighLevel is removing the ability to generate new API Keys. Migrate to **Private Integration Tokens** or **OAuth 2.0** *(This workflow now natively uses Private Integration Tokens).*
  
 ### Compatibility
  
-- **n8n**: v2.0+ (tested on v2.x, April 2026)
-- **GoHighLevel API**: v2 (Version header: 2021-07-28)
+- **n8n**: v2.0+ (tested on v2.x, May 2026)
+- **GoHighLevel API**: v2 (Version header: 2023-02-21)
 - **Vapi API**: current stable (api.vapi.ai)
 - **Node.js**: v24+ (n8n v2 default)
- 
+
 ---
+
+## 🎯 Who is this for?
+This workflow is engineered specifically for **call centers, high-volume sales agencies, real estate teams, and outreach professionals** who need to dial hundreds or thousands of contacts per day. It completely replaces the manual top-of-funnel dialing process on autopilot.
+
+> ⚠️ **LEGAL DISCLAIMER:** This workflow is provided strictly for educational and workflow automation purposes. We do not encourage or endorse spam calling, robocalling, or unsolicited telemarketing. Anyone who implements this system is solely responsible for ensuring their campaigns comply with all local, federal, and international telephony laws (e.g., TCPA, GDPR). Always ensure you have proper consent to contact your leads.
+
+---
+
+![Workflow Execution Runtime](https://raw.githubusercontent.com/TuguiDragos/ghl-n8n-ai-calling-agent/main/Agent1.png)
+
+
+![Workflow Execution Runtime](https://raw.githubusercontent.com/TuguiDragos/ghl-n8n-ai-calling-agent/main/Agent2.png)
+
 
 > Stop letting valuable leads die in your CRM. This is not just another workflow, it's a **fully autonomous AI sales agent** designed to turn your GoHighLevel contact lists into qualified, booked appointments.
 
@@ -244,7 +260,7 @@ Leave a ⭐, share it with your crew, or reach out for collabs, custom builds, o
 
 ## 🧩 Tags & Search Keywords
 
-n8n AI call workflow, AI phone agent automation, lead generation automation, voice call automation with Vapi, Twilio voice workflow, Google Sheets + n8n integration, OpenAI GPT smart caller, cold outreach AI bot, no-code SDR system, lead qualification voice AI, call follow-up automation, Slack notifications from calls, smart CRM data capture, phone bot with email extraction, n8n lead pipeline automation, automated voice campaigns, SaaS lead validation tool, freelancer cold call automation, digital agency voice outreach, customer support AI phone bot, Vapi n8n integration, Twilio Vapi smart call bot, call transcription automation, AI call workflow for Google Sheets, automation for client onboarding, conversational AI phone workflow, intelligent voice workflows with no-code, hands-free AI call solution, async sales assistant automation, AI rep that never sleeps, real-time lead qualification tool, ghl, GoHighLevel 
+n8n AI call workflow, AI phone agent automation, lead generation automation, voice call automation with Vapi, Twilio voice workflow, Google Sheets + n8n integration, OpenAI GPT smart caller, cold outreach AI bot, no-code SDR system, lead qualification voice AI, call follow-up automation, Slack notifications from calls, smart CRM data capture, phone bot with email extraction, n8n lead pipeline automation, automated voice campaigns, SaaS lead validation tool, freelancer cold call automation, digital agency voice outreach, customer support AI phone bot, Vapi n8n integration, Twilio Vapi smart call bot, call transcription automation, AI call workflow for Google Sheets, automation for client onboarding, conversational AI phone workflow, intelligent voice workflows with no-code, hands-free AI call solution, async sales assistant automation, AI rep that never sleeps, real-time lead qualification tool, ghl, GoHighLevel, n8n v2 AI workflow, GoHighLevel API v2 integration, TCPA compliant auto dialer concepts, auto-map CRM fields.
 
 Looking for something that can automate voice calls, capture lead data, and respond intelligently all without writing a single line of code?  
 This AI voice agent powered by **n8n**, **Vapi**, **Twilio**, **OpenAI**, and **Google Sheets** is exactly what you need.
