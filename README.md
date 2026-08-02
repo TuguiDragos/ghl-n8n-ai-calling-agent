@@ -1,214 +1,272 @@
-<p align="center">
-  <a href="https://n8n.partnerlinks.io/cpqi2mcvtjxx"><img src="https://img.shields.io/badge/Built%20with-n8n-EA4B71?style=flat&logo=n8n&logoColor=white" alt="n8n"></a>
-  <img src="https://img.shields.io/badge/CRM-GoHighLevel-2A2D7C?style=flat&logo=gohighlevel&logoColor=white" alt="GoHighLevel">
-  <img src="https://img.shields.io/badge/AI-OpenAI-412991?style=flat&logo=openai&logoColor=white" alt="OpenAI">
-  <img src="https://img.shields.io/badge/Voice-Vapi-8B5CF6?style=flat&logo=audiomack&logoColor=white" alt="Vapi">
-  <img src="https://img.shields.io/badge/Telephony-Twilio-F22F46?style=flat&logo=twilio&logoColor=white" alt="Twilio">
-  <img src="https://img.shields.io/badge/Data-Google%20Sheets-34A853?style=flat&logo=google-sheets&logoColor=white" alt="Google Sheets">
-  <img src="https://img.shields.io/badge/status-live-2E7D32?style=flat" alt="Status">
-</p>
+<!--
+  README for ghl-n8n-ai-calling-agent
+  Screenshots in assets/ are pre-rounded PNGs with transparent corners.
+  GitHub strips CSS from README files, so the corner radius has to live in the image.
+-->
 
-<h1 align="center">AI Call Agent for GoHighLevel: Turn Leads into Booked Appointments on Autopilot</h1>
-
-<p align="center"><i>A fully autonomous AI sales agent that calls your GoHighLevel contacts, qualifies them, books appointments straight into your calendar, and updates your CRM, all while you sleep. Built in n8n with Vapi, Twilio & OpenAI. Updated May 2026.</i></p>
+<img src="./assets/hero.svg" alt="AI calling agent for GoHighLevel, built in n8n with Vapi and Twilio" width="100%" />
 
 <p align="center">
-  <a href="https://tuguidragos.gumroad.com/l/ghl-n8n-vapi-ai-calling-agent">
-    <img src="https://img.shields.io/badge/Get%20the%20Full%20Workflow-on%20Gumroad-FF90E8?style=for-the-badge&logo=gumroad" alt="Purchase on Gumroad">
-  </a>
+  <a href="https://n8n.io/workflows/8339-replace-your-call-center-with-an-ai-agent-using-gohighlevel-ghl-vapi-and-twilio/"><img alt="Official n8n template" height="25" src="https://img.shields.io/badge/Official%20n8n%20template-161826?style=flat&logo=n8n&logoColor=9184D9" /></a>
+  <a href="https://www.gohighlevel.com/"><img alt="GoHighLevel" height="25" src="https://img.shields.io/badge/GoHighLevel-161826?style=flat&logo=data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNCAyNCI%2BPHBhdGggZmlsbD0ibm9uZSIgc3Ryb2tlPSIjOTE4NEQ5IiBzdHJva2Utd2lkdGg9IjIiIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIgZD0iTTMgMjBWMTRNOSAyMFY5TTE1IDIwVjEyTTIxIDIwVjQiLz48L3N2Zz4%3D" /></a>
+  <a href="https://vapi.ai"><img alt="Vapi" height="25" src="https://img.shields.io/badge/Vapi-161826?style=flat&logo=data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNCAyNCI%2BPGcgZmlsbD0ibm9uZSIgc3Ryb2tlPSIjOTE4NEQ5IiBzdHJva2Utd2lkdGg9IjIiIHN0cm9rZS1saW5lY2FwPSJyb3VuZCI%2BPHBhdGggZD0iTTMgMTB2NE03LjUgNi41djExTTEyIDN2MThNMTYuNSA2LjV2MTFNMjEgMTB2NCIvPjwvZz48L3N2Zz4%3D" /></a>
+  <a href="https://www.twilio.com"><img alt="Twilio" height="25" src="https://img.shields.io/badge/Twilio-161826?style=flat&logo=data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNCAyNCI%2BPGcgZmlsbD0iIzkxODREOSI%2BPHBhdGggZD0iTTEyIDEuNkExMC40IDEwLjQgMCAxIDAgMjIuNCAxMiAxMC40MSAxMC40MSAwIDAgMCAxMiAxLjZ6bTAgMTguMkE3LjggNy44IDAgMSAxIDE5LjggMTIgNy44MSA3LjgxIDAgMCAxIDEyIDE5Ljh6Ii8%2BPGNpcmNsZSBjeD0iMTQuOSIgY3k9IjkuMSIgcj0iMi4yIi8%2BPGNpcmNsZSBjeD0iMTQuOSIgY3k9IjE0LjkiIHI9IjIuMiIvPjxjaXJjbGUgY3g9IjkuMSIgY3k9IjkuMSIgcj0iMi4yIi8%2BPGNpcmNsZSBjeD0iOS4xIiBjeT0iMTQuOSIgcj0iMi4yIi8%2BPC9nPjwvc3ZnPg%3D%3D" /></a>
+  <a href="https://openai.com"><img alt="OpenAI" height="25" src="https://img.shields.io/badge/OpenAI-161826?style=flat&logo=data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNCAyNCI%2BPGcgZmlsbD0ibm9uZSIgc3Ryb2tlPSIjOTE4NEQ5IiBzdHJva2Utd2lkdGg9IjEuOSIgc3Ryb2tlLWxpbmVqb2luPSJyb3VuZCI%2BPHBhdGggZD0iTTEyIDIuNiAyMC4xIDcuM3Y5LjRMMTIgMjEuNCAzLjkgMTYuN1Y3LjN6Ii8%2BPHBhdGggZD0iTTEyIDcuNCAxNS45IDkuN3Y0LjZMMTIgMTYuNiA4LjEgMTQuM1Y5Ljd6Ii8%2BPC9nPjwvc3ZnPg%3D%3D" /></a>
+  <a href="https://workspace.google.com/products/sheets/"><img alt="Google Sheets" height="25" src="https://img.shields.io/badge/Google%20Sheets-161826?style=flat&logo=googlesheets&logoColor=9184D9" /></a>
+  <a href="https://github.com/TuguiDragos/ghl-n8n-ai-calling-agent/blob/main/LICENSE.md"><img alt="License" height="25" src="https://img.shields.io/badge/License-proprietary-161826?style=flat" /></a>
+  <a href="https://www.youtube.com/watch?v=xgDPP_hJ7ms"><img alt="Watch the lite build" height="25" src="https://img.shields.io/badge/Watch%20the%20lite%20build-161826?style=flat&logo=youtube&logoColor=9184D9" /></a>
 </p>
 
+<p align="center">
+  <a href="https://tuguidragos.gumroad.com/l/ghl-n8n-vapi-ai-calling-agent"><img alt="Get the full system on Gumroad" height="48" src="./assets/cta-gumroad.svg" /></a>
+</p>
 
-> Stop letting valuable leads die in your CRM. This is not just another workflow. It's a **fully autonomous AI sales agent** designed to turn your GoHighLevel contact lists into qualified, booked appointments.
+---
 
-Imagine a world where every single lead is contacted within minutes by a professional, human-like voice. A world where your sales pipeline fills up while you sleep. That's exactly what this AI automation system delivers.
+An AI agent that calls your GoHighLevel contacts, holds the conversation, books the appointment straight into your calendar, then writes the summary and the tags back to the CRM. It starts at 9 AM and stops when the list is done.
 
-**This is what a fully automated sales pipeline looks like:**
+Built in n8n. Twenty-four nodes, six phone numbers, no human in the loop.
 
-![Booked appointments pipeline in GoHighLevel](https://raw.githubusercontent.com/TuguiDragos/ghl-n8n-ai-calling-agent/refs/heads/main/Opportunities%20GHL.png)
+<br>
 
-> **A note on demo results:** the pipeline stages shown in the demo screenshots are from campaigns targeting warm, opt-in leads (users who previously filled out a form to express interest). Your own results will vary and depend on the quality, source, and temperature of your contact list.
+### Approved and listed by n8n
+
+This workflow is published on the **official n8n template library**, where it sells for **$230**.
+
+**[Replace your call center with an AI agent using GoHighLevel (GHL), Vapi and Twilio](https://n8n.io/workflows/8339-replace-your-call-center-with-an-ai-agent-using-gohighlevel-ghl-vapi-and-twilio/)**
+
+The same system, with the bonus lead importer and the full setup pack, is on [Gumroad](https://tuguidragos.gumroad.com/l/ghl-n8n-vapi-ai-calling-agent).
+
+<br>
+
+### What a full pipeline looks like
+
+<img src="./assets/01-pipeline.png" alt="Booked appointments pipeline in GoHighLevel" width="100%" />
+
+> **On these numbers.** The stages above come from campaigns run against warm, opt-in leads: people who had already filled in a form. Your results depend on the quality, source and temperature of your own list.
+
+<br>
 
 <details>
-<summary><strong>🆕 What changed in the May 2026 update (full n8n v2 migration)</strong></summary>
+<summary><strong>What changed in the May 2026 update, full n8n v2 migration</strong></summary>
 
 <br/>
 
-Full migration to n8n v2 with updated APIs, error handling, documentation, and the complete removal of complex dependencies.
+Full migration to n8n v2 with updated APIs, error handling, documentation, and the removal of every complex dependency.
 
 **Added**
-- **Zero GHL Developer Apps required:** removed the dependency on the native n8n GoHighLevel node. The workflow now runs purely on standard HTTP Requests using a simple GHL Private API Key (Bearer token).
-- **Auto-Mapping Custom Fields:** no more hunting down Custom Field IDs. A new `18.5 Get Custom Fields` Smart Scan node reads your GHL account and maps the correct IDs dynamically.
-- **In-canvas interactive tutorials:** 4 beginner-friendly sticky-note tutorials placed directly on the workflow canvas. Setup is visual and takes minutes.
-- **Error handling with retry** on all 6 HTTP Request nodes: `retryOnFail: true` with configurable `maxTries` (3–5), `onError: continueRegularOutput` to prevent crashes on transient API failures, and `waitBetweenTries` (2000–5000ms) per node.
-- **Quick Setup Guide** sticky note listing every field that requires credentials, node by node.
+- **Zero GHL Developer Apps required.** The dependency on the native n8n GoHighLevel node is gone. The workflow runs purely on standard HTTP Requests with a GHL Private Integration Token (Bearer).
+- **Auto-mapping custom fields.** No more hunting for Custom Field IDs. The new `18.5 Get Custom Fields` smart-scan node reads your GHL account and maps the right IDs at runtime.
+- **In-canvas tutorials.** Four beginner-friendly sticky-note walkthroughs sitting directly on the workflow canvas. Setup is visual.
+- **Error handling with retry** on all 6 HTTP Request nodes: `retryOnFail: true`, `maxTries` 3 to 5, `onError: continueRegularOutput` so a transient API failure cannot kill a run, and `waitBetweenTries` of 2000 to 5000 ms per node.
+- **Quick Setup Guide** sticky note listing every field that needs a credential, node by node.
 
 **Changed**
-- **GHL Contacts API migrated** from deprecated `GET /contacts` to `POST /contacts/search` (nodes `GHL Paginated Request` and `GHL Paginated Updated`). Cursor-based pagination replaced with page-based (`meta.nextPage`); request body now includes `locationId`, `pageLimit`, and `page`.
-- **GHL Notes API:** call transcript logging moved to the dedicated `POST /notes` endpoint for cleaner CRM profiles.
-- **All HTTP Request nodes** upgraded from `typeVersion 4.2` to `4.4`/`4.6`.
-- **All If nodes** upgraded from `typeVersion 2.2` to `2.3`.
-- **Schedule Trigger** upgraded from `typeVersion 1.2` to `1.3`.
+- **GHL Contacts API** migrated from the deprecated `GET /contacts` to `POST /contacts/search` in `GHL Paginated Request` and `GHL Paginated Updated`. Cursor pagination replaced with page-based (`meta.nextPage`); the request body now carries `locationId`, `pageLimit` and `page`.
+- **GHL Notes API.** Transcript logging moved to the dedicated `POST /notes` endpoint for cleaner contact profiles.
+- **All HTTP Request nodes** from `typeVersion 4.2` to `4.4`/`4.6`.
+- **All If nodes** from `typeVersion 2.2` to `2.3`.
+- **Schedule Trigger** from `typeVersion 1.2` to `1.3`.
 
 **Fixed**
-- **Vapi "Ended" polling:** the call-status loop now accurately handles Vapi's terminal statuses, preventing infinite loops.
-- **Critical bug in `Check Final Status + shouldContinue` logic:** the Code node returned a plain `{count, status, shouldContinue}` object (incompatible with n8n v2). Corrected to the proper item format `[{json: {count, status, shouldContinue}}]`.
+- **Vapi "Ended" polling.** The call-status loop now handles Vapi's terminal statuses correctly, so it can no longer spin forever.
+- **`Check Final Status + shouldContinue`.** The Code node returned a bare `{count, status, shouldContinue}` object, which n8n v2 rejects. Corrected to the item format `[{json: {count, status, shouldContinue}}]`.
 
 **Deprecated**
-- `GET /contacts` is no longer used (GoHighLevel marked it deprecated in favor of `POST /contacts/search` with advanced filters).
-- GHL API Keys auth: GoHighLevel is removing the ability to generate new API Keys. Migrate to **Private Integration Tokens** or **OAuth 2.0**. *(This workflow now natively uses Private Integration Tokens.)*
+- `GET /contacts` is no longer used. GoHighLevel deprecated it in favor of `POST /contacts/search` with advanced filters.
+- GHL API Keys. GoHighLevel is removing the ability to generate new ones. Migrate to Private Integration Tokens or OAuth 2.0. This workflow already uses Private Integration Tokens.
 
 **Compatibility**
-- **n8n:** v2.0+ (tested on v2.x, May 2026)
-- **GoHighLevel API:** v2 (Version header: 2023-02-21)
-- **Vapi API:** current stable (api.vapi.ai)
-- **Node.js:** v24+ (n8n v2 default)
+
+| | |
+| :-- | :-- |
+| n8n | v2.0+, tested on v2.x, May 2026 |
+| GoHighLevel API | v2, Version header `2023-02-21` |
+| Vapi API | current stable, `api.vapi.ai` |
+| Node.js | v24+, the n8n v2 default |
 
 </details>
 
----
+<br>
 
-##  Who is this for?
+### Who it is for
 
-This workflow is engineered specifically for **call centers, high-volume sales agencies, real estate teams, and outreach professionals** who need to dial hundreds or thousands of contacts per day. It completely replaces the manual top-of-funnel dialing process, on autopilot.
+Call centers, high-volume sales agencies, real estate teams and outreach professionals who need to dial hundreds of contacts a day. It replaces manual top-of-funnel dialing entirely.
 
-> ⚠️ **Legal disclaimer:** this workflow is provided strictly for educational and workflow-automation purposes. We do not encourage or endorse spam calling, robocalling, or unsolicited telemarketing. Anyone who implements this system is solely responsible for ensuring their campaigns comply with all local, federal, and international telephony laws (e.g. TCPA, GDPR). Always ensure you have proper consent to contact your leads.
+> **Legal.** This workflow is provided for educational and workflow-automation purposes. It does not encourage spam calling, robocalling or unsolicited telemarketing. Anyone running it is solely responsible for complying with local, federal and international telephony law, TCPA and GDPR included. Get consent before you call.
 
-
-##  The Engine: A Battle-Tested Automation Core Built for Scale & Reliability
-
-The results in the GHL pipeline aren't magic. They're the product of this n8n workflow, an enterprise-grade automation engine designed for one purpose: to run relentlessly and turn your leads into opportunities.
-
-![n8n workflow overview](https://raw.githubusercontent.com/TuguiDragos/ghl-n8n-ai-calling-agent/refs/heads/main/Workflow%20n8n.png)
-
-This isn't just a simple chain of nodes. It's a complete system with advanced logic for routing, error handling, and data processing, ensuring smooth and reliable operation from start to finish.
-
-### Proven in real-world conditions
-
-We don't just promise performance. We prove it. This workflow has been rigorously tested in live environments to handle high-volume campaigns without failure.
-
-- **Built for endurance:** tested and proven to run for **over 9 hours straight (580+ minutes)** in a single execution without crashes or interruptions, methodically processing contact lists.
-- **High-volume throughput:** a single AI agent consistently makes **~300 non-stop calls** in a standard 9:00 AM – 7:30 PM workday. Scale this by simply adding more agents.
-
-![AI agent running](https://raw.githubusercontent.com/TuguiDragos/ghl-n8n-ai-calling-agent/refs/heads/main/Agent%20working.png)
-
-![Live execution runtime](https://raw.githubusercontent.com/TuguiDragos/ghl-n8n-ai-calling-agent/main/Agent1.png)
-
-![Live execution runtime](https://raw.githubusercontent.com/TuguiDragos/ghl-n8n-ai-calling-agent/main/Agent2.png)
-
-#### Key architectural features
-
-- **Smart Caller ID rotation:** to maximize call deliverability and bypass carrier spam filters, the agent automatically rotates calls across a pool of multiple phone numbers (the current setup uses 6 different numbers). This protects your number reputation and dramatically increases the chance of connecting with your lead.
-- **Scalable by design:** the workflow is ready for multi-agent deployment. Add new agents and phone numbers without rebuilding the core logic.
-- **Bulletproof duplicate prevention:** an advanced GHL tag-locking mechanism guarantees a contact is never called twice, even when processing thousands of leads under parallel conditions.
-- **Smart error handling:** logic paths gracefully manage common API issues, ensuring the workflow continues its mission without stopping unexpectedly.
+<br>
 
 ---
 
-##  The Brain: An AI That Understands, Analyzes, and Acts
+## The engine
 
-The system's intelligence goes far beyond the live conversation. The moment a call is finished, a powerful analysis and automation ecosystem takes over directly within your GoHighLevel account, turning raw data into actionable results and qualified appointments.
+<img src="./assets/02-workflow-overview.png" alt="The n8n workflow overview" width="100%" />
 
-### 1. Automated call summarization & classification
+Twenty-four nodes with routing, retry and data processing wired in. Not a chain, a system.
 
-You don't have to listen to hours of call recordings. Every conversation is automatically transcribed, a concise AI summary is generated, and a custom GHL workflow then analyzes that summary to determine the lead's intent and sorts them for you.
+<img src="./assets/03-workflow-nodes.png" alt="All twenty-four nodes of the calling agent in n8n" width="100%" />
 
-![GHL call classifier workflow](https://raw.githubusercontent.com/TuguiDragos/ghl-n8n-ai-calling-agent/main/Call%20Summary%20Classifier%20GHL.png)
-*(This GHL workflow automatically reads call summaries and tags contacts as `Interested`, `Not Interested`, `Appointment Booked`, etc.)*
+The whole graph, node by node. Contacts come in through `2. GHL Paginated Request`, get filtered, become a Vapi customer, and get a caller ID from `6. Select Agent`. The loop between nodes 9 and 14 polls Vapi until the call reaches a terminal status. From `16. Add Call Status Tag` onward everything goes back into GoHighLevel: the outcome tag, the call summary on the contact record, and the transcript as a note.
 
-### 2. Direct-to-calendar appointment booking
+<br>
 
-When a lead agrees to a meeting, the agent doesn't just take a note. It accesses your GHL calendar via API, finds an available slot, and books the appointment **directly and instantly**. The entire history, from call recording to summary to confirmed appointment, appears seamlessly in the contact's activity feed.
+### Proven under load
 
-![Confirmed appointment in GHL](https://raw.githubusercontent.com/TuguiDragos/ghl-n8n-ai-calling-agent/refs/heads/main/GHL%20appointment.png)
-*(A real appointment booked by the AI, visible directly in the GHL contact view.)*
+- **Endurance.** Tested at over **9 hours in a single execution**, 580+ minutes, no crash, no interruption.
+- **Throughput.** One agent makes **~300 calls** in a 9:00 to 19:30 day. Scale by adding agents.
 
-### 3. A full suite of automations
+<img src="./assets/04-agent-running.png" alt="The agent running live" width="100%" />
 
-This isn't just one workflow. It's a suite of interconnected automations designed to handle the entire lead-engagement lifecycle. From voicemail detection to post-call analysis, you get a complete system, not just a single tool.
+**Caller ID rotation.** The agent spreads calls across a pool of numbers, six in the current setup. This protects number reputation, keeps you out of carrier spam filters and raises the chance the phone actually rings.
 
-![GHL workflow suite](https://raw.githubusercontent.com/TuguiDragos/ghl-n8n-ai-calling-agent/refs/heads/main/Workflow%20List%20GHL.png)
-*(The package includes multiple, specialized GHL workflows that work together.)*
+**Duplicate prevention.** A GHL tag-locking mechanism guarantees a contact is never called twice, even with thousands of leads moving in parallel.
 
-### 4. Real-time automated tagging
+**Multi-agent ready.** Add agents and numbers without touching the core logic.
 
-Based on the outcome of every single call, the system applies the correct tags to your contacts in real time. This keeps your CRM perfectly organized and allows for instant lead segmentation and follow-up automation.
-
-![Automated GHL tagging](https://raw.githubusercontent.com/TuguiDragos/ghl-n8n-ai-calling-agent/refs/heads/main/GHL%20tag-VAPI.png)
-*(Contacts being automatically tagged based on call events like `customer-ended-call` or `busy`.)*
-
-### 5. Automated multi-channel follow-up (SMS & WhatsApp)
-
-Because each contact is tagged based on the call outcome, you can easily extend the workflow in GHL to trigger automated follow-ups:
-
-- A lead is tagged `No Answer` → the system automatically sends an SMS: *"Hi [Name], this is Daniel from [Company]. I just tried calling about your inquiry. Is there a better time to chat?"*
-- A lead is tagged `Interested` → the system sends a WhatsApp message with a link to your brochure or website.
-
-This creates a persistent, automated nurturing sequence that engages leads across multiple platforms, dramatically increasing your chances of conversion.
-
-### A true conversational AI, battle-tested at scale
-
-What makes this system special isn't just the automation. It's the intelligence. The agent's ability to hold natural conversations, handle objections, and interact with your GHL calendar comes from a meticulously crafted Vapi prompt: a set of rules, personality traits, and logical instructions that let the AI think, adapt, and react in real time.
-
-The agent has been deployed in real-world campaigns, successfully handling **thousands of calls** and hundreds of minutes of talk time.
-
-![Vapi analytics dashboard](https://raw.githubusercontent.com/TuguiDragos/ghl-n8n-ai-calling-agent/refs/heads/main/vapi%20dashboard.png)
-*(Real performance data showing over 1,700 calls made by the system.)*
-
-![Vapi prompt configuration](https://raw.githubusercontent.com/TuguiDragos/ghl-n8n-ai-calling-agent/refs/heads/main/VAPI%20promt%20model.png)
-*(The prompt serves as the central brain, containing all the logic, from personality traits to complex tool integrations.)*
+<br>
 
 ---
 
-## 🎁 The Complete Ecosystem: A "Set It & Forget It" Solution
+## The brain
 
-What good is an AI agent if you have to manually feed it new leads? To make this a truly set-it-and-forget-it lead-conversion system, this package includes a crucial **bonus workflow**.
+The intelligence does not stop when the call does. Every conversation is transcribed, summarized and acted on inside GoHighLevel.
 
-It automatically syncs **300–400 of your newest unprocessed leads** from a simple Google Sheet into your GoHighLevel CRM every single night. At 9 AM the next morning, the AI Calling Agent automatically wakes up and starts calling the fresh list. You don't have to lift a finger.
+### Call summary and classification
 
-![Automated lead importer workflow](https://raw.githubusercontent.com/TuguiDragos/ghl-n8n-ai-calling-agent/main/Upload%20GHL%20contacts.png)
+<img src="./assets/07-call-classifier.png" alt="GHL workflow that classifies call summaries" width="100%" />
 
-#### Why this is a custom-engineered solution
+You never listen to a recording. A GHL workflow reads the AI summary and tags the contact `Interested`, `Not Interested`, `Appointment Booked` and the rest.
 
-A technical note for power users: the standard GoHighLevel node in n8n is limited to fetching only the last 100 contacts, a major bottleneck for any serious campaign. We bypassed this limitation by building a custom solution that interacts **directly with the GHL API using pagination**, reliably fetching a large, fresh batch of leads every day. It's a tested, 100% functional method designed for stability and performance, protecting your system from being overloaded while ensuring your agent never runs out of work.
+### Booking straight into the calendar
+
+<img src="./assets/08-appointment.png" alt="An appointment booked by the AI, seen in the GHL contact view" width="100%" />
+
+When a lead says yes, the agent hits your GHL calendar over the API, finds a slot and books it. Recording, summary and confirmed appointment all land in the contact's activity feed.
+
+### A suite, not a single workflow
+
+<img src="./assets/09-ghl-workflows.png" alt="The full set of GHL workflows in the package" width="100%" />
+
+Voicemail detection, post-call analysis, follow-up routing. The package ships several specialized GHL workflows that work together.
+
+### Real-time tagging
+
+<img src="./assets/10-tagging.png" alt="Contacts tagged automatically from call events" width="100%" />
+
+Every call outcome writes a tag the moment it happens, on events like `customer-ended-call` or `busy`. Your CRM stays segmented without anyone touching it.
+
+### Follow-up on SMS and WhatsApp
+
+Because the tag lands instantly, GHL can pick it up and keep going:
+
+- `No Answer` triggers an SMS: *"Hi [Name], this is Daniel from [Company]. I just tried calling about your inquiry. Is there a better time to chat?"*
+- `Interested` triggers a WhatsApp message with your brochure or booking link.
+
+<br>
+
+### The conversation itself
+
+<img src="./assets/06-vapi-prompt.png" alt="The Vapi prompt that runs the agent" width="100%" />
+
+The agent holds a natural conversation, handles objections and talks to your GHL calendar because of a carefully built Vapi prompt: personality, rules, and the tool definitions that let it act mid-call.
+
+<img src="./assets/05-vapi-dashboard.png" alt="Vapi analytics showing over 1,700 calls" width="100%" />
+
+Over **1,700 calls** placed by this system in live campaigns.
+
+<br>
+
+---
+
+## Setup is on the canvas
+
+<img src="./assets/11-canvas-tutorials.png" alt="Four setup tutorials sitting on the n8n canvas" width="100%" />
+
+Four tutorials live inside the workflow itself, next to the nodes they configure. Nothing to cross-reference.
+
+**Tutorial 2, Twilio to Vapi.** Import your Twilio number into Vapi and point node 6 at the right assistant.
+
+<img src="./assets/12-twilio-vapi.png" alt="Importing a Twilio number into Vapi" width="100%" />
+
+**Tutorial 3, Vapi to n8n.** One Header Auth credential, reused across nodes 5, 7, 10 and 15.
+
+<img src="./assets/13-vapi-n8n-auth.png" alt="Header Auth credential setup in n8n" width="100%" />
+
+Tutorial 1 covers the GoHighLevel Private Integration Token and your Location ID. Tutorial 4 wires the GHL calendar into Vapi so the agent can check availability and create events during a call.
+
+<br>
+
+---
+
+## The bonus: leads that refill themselves
+
+An agent with no leads is an agent doing nothing. The package includes a second workflow that syncs **300 to 400 fresh, unprocessed leads** from a Google Sheet into GoHighLevel every night. At 9 AM the calling agent wakes up to a full list.
+
+<img src="./assets/14-lead-importer.png" alt="The nightly lead importer workflow" width="100%" />
+
+<img src="./assets/15-lead-sheet.png" alt="The Google Sheet the importer reads from" width="100%" />
+
+The sheet is plain: `firstName`, `lastName`, `phone`, `address`, `city`, `state`, and a `processed` column the workflow maintains so nothing is imported twice.
+
+**Why this had to be custom.** The stock GoHighLevel node in n8n only fetches the last 100 contacts, which is useless at campaign scale. This talks to the GHL API directly with real pagination, pulling a large fresh batch every day without overloading anything.
+
+<br>
 
 <p align="center">
-  <a href="https://tuguidragos.gumroad.com/l/ghl-n8n-vapi-ai-calling-agent">
-    <img src="https://img.shields.io/badge/Get%20the%20Full%20Workflow-on%20Gumroad-FF90E8?style=for-the-badge&logo=gumroad" alt="Purchase on Gumroad">
-  </a>
+  <a href="https://tuguidragos.gumroad.com/l/ghl-n8n-vapi-ai-calling-agent"><img alt="Get the full system on Gumroad" height="48" src="./assets/cta-gumroad.svg" /></a>
 </p>
+
+<br>
 
 ---
 
-## ❓ Frequently Asked Questions
+## Questions
 
-**Why should I buy this product instead of building it myself?**
+**Why buy it instead of building it?**
 
-You're acquiring a production-ready, battle-tested AI automation system that represents **hundreds of hours of research, development, debugging, and real-world testing**: from bypassing GHL API limitations with custom pagination, to engineering a bulletproof "locking" system to prevent duplicate calls, to refining the AI's conversational nuance over thousands of live interactions. It saves you **months of frustration** and lets you start booking appointments tomorrow, not next quarter.
+Because the hard parts are already solved: bypassing the GHL API contact limit with real pagination, the locking system that stops duplicate calls under parallel load, the Vapi polling loop that handles every terminal status, and a conversational prompt refined over thousands of live calls. Hundreds of hours of building and debugging. You start booking appointments this week, not next quarter.
 
-**What are the ongoing operational costs?**
+**What does it cost to run?**
 
-Besides your standard `GHL` and `n8n` subscriptions, the operational costs for `Vapi` and `Twilio` are very low. On average, a call costs between **$0.05 – $0.10**, depending on its duration. The system is designed to be highly efficient to keep your costs minimal.
+On top of your GHL and n8n subscriptions, a call runs **$0.05 to $0.10** on Vapi and Twilio combined, depending on length.
 
+**Is there a cheaper version?**
 
-##  About the Creator
+Yes, a lite build that runs on Google Sheets instead of GoHighLevel. It calls, qualifies, pulls the email out of the conversation and logs the transcript, but it has no CRM integration, no calendar booking, no tagging and no lead importer. Separate product, **€58.99**.
+
+[Lite build on Gumroad](https://tuguidragos.gumroad.com/l/n8n-ai-call-agent) &nbsp;&#183;&nbsp; [its repo](https://github.com/TuguiDragos/n8n-ai-call-agent) &nbsp;&#183;&nbsp; [walkthrough on YouTube](https://www.youtube.com/watch?v=xgDPP_hJ7ms)
+
+<br>
+
+---
+
+## License
+
+Proprietary. Buying it gives you the right to run it for your own business, personal or internal. It may not be resold, sublicensed or redistributed, in part or in whole. Full terms in [LICENSE.md](https://github.com/TuguiDragos/ghl-n8n-ai-calling-agent/blob/main/LICENSE.md).
+
+<br>
+
+---
+
+## About
 
 Built by **Țugui Dragoș** `|QC⟩`. I build automation that runs without supervision: n8n workflows, AI agents, and the quiet machinery behind a business.
 
 <p align="center">
-  <a href="https://www.tuguidragos.com/"><img src="https://img.shields.io/badge/Website-2E7D32?style=flat&logo=safari&logoColor=white" alt="Website"></a>
-  <a href="https://blog.tuguidragos.com"><img src="https://img.shields.io/badge/Blog-738A05?style=flat&logo=ghost&logoColor=white" alt="Blog"></a>
-  <a href="https://n8n.io/creators/tuguidragos/"><img src="https://img.shields.io/badge/n8n%20Creator-EA4B71?style=flat&logo=n8n&logoColor=white" alt="n8n Creator"></a>
-  <a href="https://tuguidragos.gumroad.com"><img src="https://img.shields.io/badge/Gumroad-FF90E8?style=flat&logo=gumroad&logoColor=black" alt="Gumroad"></a>
-  <a href="https://www.linkedin.com/in/tuguidragos"><img src="https://img.shields.io/badge/LinkedIn-0A66C2?style=flat&logo=linkedin&logoColor=white" alt="LinkedIn"></a>
-  <a href="https://github.com/TuguiDragos"><img src="https://img.shields.io/badge/GitHub-181717?style=flat&logo=github&logoColor=white" alt="GitHub"></a>
+  <a href="https://www.tuguidragos.com/"><img alt="Website" height="25" src="https://img.shields.io/badge/Website-161826?style=flat&logo=safari&logoColor=9184D9" /></a>
+  <a href="https://n8n.io/creators/tuguidragos/"><img alt="n8n Creator" height="25" src="https://img.shields.io/badge/n8n%20Creator-161826?style=flat&logo=n8n&logoColor=9184D9" /></a>
+  <a href="https://tuguidragos.gumroad.com"><img alt="Gumroad" height="25" src="https://img.shields.io/badge/Gumroad-161826?style=flat&logo=gumroad&logoColor=9184D9" /></a>
+  <a href="https://www.linkedin.com/in/tuguidragos"><img alt="LinkedIn" height="25" src="https://img.shields.io/badge/LinkedIn-161826?style=flat&logo=data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNCAyNCI%2BPGcgZmlsbD0iIzkxODREOSI%2BPHJlY3QgeD0iMi42IiB5PSI4LjkiIHdpZHRoPSI0IiBoZWlnaHQ9IjEyLjUiIHJ4PSIwLjYiLz48Y2lyY2xlIGN4PSI0LjYiIGN5PSI0LjQiIHI9IjIuNCIvPjxwYXRoIGQ9Ik0xMCA4LjloMy44djEuOGE0LjIgNC4yIDAgMCAxIDMuNy0yYzMgMCA0LjkgMS45IDQuOSA1LjR2Ny4zaC00di02LjZjMC0xLjctLjctMi43LTIuMi0yLjdzLTIuMyAxLTIuMyAyLjd2Ni42SDEweiIvPjwvZz48L3N2Zz4%3D" /></a>
+  <a href="https://github.com/TuguiDragos"><img alt="GitHub" height="25" src="https://img.shields.io/badge/GitHub-161826?style=flat&logo=github&logoColor=9184D9" /></a>
 </p>
 
-**contact@tuguidragos.com** for questions, custom builds, or smart automation work.
-If this project helped or inspired you, leave a ⭐ and share it with your crew.
+Write to **contact@tuguidragos.com** for questions, custom builds or automation work. If this helped, leave a star.
+
+<br>
 
 ---
 
-## 🧩 Tags & Search Keywords
+<p align="center">Built with 🖤 by <a href="https://tuguidragos.com">Țugui Dragoș</a></p>
 
-GoHighLevel AI call agent, GHL n8n workflow, AI phone agent for GoHighLevel, automated appointment booking GHL, n8n Vapi Twilio integration, AI voice agent GoHighLevel, autonomous SDR system, high-volume AI dialer, lead qualification voice AI, GHL API v2 pagination, n8n v2 AI workflow, AI cold calling automation, real estate AI calling agent, call center automation n8n, Vapi GoHighLevel integration, OpenAI smart caller, automated CRM tagging, direct-to-calendar AI booking, TCPA-aware auto dialer concepts, no-code AI sales agent, appointment setter AI, GHL voicemail detection, multi-agent calling system, caller ID rotation n8n, AI rep that never sleeps.
+<!-- GoHighLevel AI call agent, GHL n8n workflow, AI phone agent for GoHighLevel, automated appointment booking GHL, n8n Vapi Twilio integration, AI voice agent GoHighLevel, autonomous SDR system, high-volume AI dialer, lead qualification voice AI, GHL API v2 pagination, n8n v2 AI workflow, AI cold calling automation, real estate AI calling agent, call center automation n8n, Vapi GoHighLevel integration, OpenAI smart caller, automated CRM tagging, direct-to-calendar AI booking, no-code AI sales agent, appointment setter AI, GHL voicemail detection, multi-agent calling system, caller ID rotation n8n -->
