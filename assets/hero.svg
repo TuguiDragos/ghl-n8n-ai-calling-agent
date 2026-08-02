@@ -1,0 +1,120 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="452" viewBox="0 0 1200 452" role="img" aria-labelledby="ht hd">
+<title id="ht">AI calling agent for GoHighLevel</title>
+<desc id="hd">n8n pulls contacts from GoHighLevel, Vapi calls them over Twilio, and the outcome goes back into the CRM as a tag, a summary and a booked appointment.</desc>
+<defs>
+  <linearGradient id="ground" x1="0" y1="0" x2="1200" y2="452" gradientUnits="userSpaceOnUse">
+    <stop offset="0" stop-color="#1a1d2e"/><stop offset="1" stop-color="#121422"/>
+  </linearGradient>
+  <radialGradient id="halo" cx="1008" cy="226" r="400" gradientUnits="userSpaceOnUse">
+    <stop offset="0" stop-color="#9184d9" stop-opacity="0.16"/><stop offset="1" stop-color="#9184d9" stop-opacity="0"/>
+  </radialGradient>
+  <style>
+    .mono { font-family: ui-monospace, SFMono-Regular, 'JetBrains Mono', Menlo, Consolas, monospace; }
+    .ui { font-family: Inter, system-ui, -apple-system, sans-serif; }
+    .p { fill: #9184d9; }
+    .cmd { fill: #e9e9ed; }
+    .jb { fill: #6e7189; }
+    .jk { fill: #a89ce4; }
+    .jv { fill: #c8cadb; }
+    .cur { fill: #9184d9; animation: blink 1.1s step-end infinite; }
+    .row { opacity: 0; }
+    .r1 { animation: slot 8.4s cubic-bezier(0.2, 0.9, 0.3, 1) infinite }
+    .r2 { animation: slot 8.4s cubic-bezier(0.2, 0.9, 0.3, 1) infinite 1.5s }
+    .r3 { animation: slot 8.4s cubic-bezier(0.2, 0.9, 0.3, 1) infinite 3s }
+    .r4 { animation: slot 8.4s cubic-bezier(0.2, 0.9, 0.3, 1) infinite 4.5s }
+    .dot { animation: live 2.1s ease-in-out infinite }
+    @keyframes blink { 0%, 49% { opacity: 1 } 50%, 100% { opacity: 0 } }
+    @keyframes slot {
+      0%   { opacity: 0; transform: translateY(7px) }
+      5%   { opacity: 1; transform: translateY(0) }
+      86%  { opacity: 1; transform: translateY(0) }
+      94%, 100% { opacity: 0; transform: translateY(0) }
+    }
+    @keyframes live {
+      0%, 100% { opacity: 1 }
+      50%      { opacity: 0.28 }
+    }
+  </style>
+</defs>
+
+<rect width="1200" height="452" rx="14" fill="url(#ground)"/>
+<rect width="1200" height="452" rx="14" fill="url(#halo)"/>
+<rect x="0.5" y="0.5" width="1199" height="451" rx="14" fill="none" stroke="#2b2e46"/>
+
+<g transform="translate(1008 0)">
+  <circle class="dot" cx="-146" cy="72" r="4" fill="#9184d9"/>
+  <text x="-134" y="76" class="ui" font-size="13" font-weight="600" fill="#e9e9ed">Agent Final V230626</text>
+  <text x="152" y="76" text-anchor="end" class="mono" font-size="11.5" fill="#6e7189">live</text>
+  <line x1="-152" y1="94" x2="152" y2="94" stroke="#2b2e46"/>
+
+  <g class="row r1">
+    <rect x="-152" y="108" width="304" height="48" rx="9" fill="#171a2a" stroke="#2b2e46"/>
+    <text x="-138" y="137" class="mono" font-size="10.5" fill="#6e7189">09:00:14</text>
+    <text x="-82" y="137" class="mono" font-size="12" fill="#c8cadb">+1 743 &#8226;&#8226;42</text>
+    <rect x="82" y="122" width="56" height="20" rx="10" fill="#252a45" stroke="#3d3f60"/>
+    <text x="110" y="136" text-anchor="middle" class="ui" font-size="10.5" fill="#a89ce4">booked</text>
+  </g>
+
+  <g class="row r2">
+    <rect x="-152" y="166" width="304" height="48" rx="9" fill="#171a2a" stroke="#2b2e46"/>
+    <text x="-138" y="195" class="mono" font-size="10.5" fill="#6e7189">09:02:51</text>
+    <text x="-82" y="195" class="mono" font-size="12" fill="#c8cadb">+1 986 &#8226;&#8226;17</text>
+    <rect x="66" y="180" width="72" height="20" rx="10" fill="#1e2135" stroke="#2b2e46"/>
+    <text x="102" y="194" text-anchor="middle" class="ui" font-size="10.5" fill="#8e91ad">no answer</text>
+  </g>
+
+  <g class="row r3">
+    <rect x="-152" y="224" width="304" height="48" rx="9" fill="#171a2a" stroke="#2b2e46"/>
+    <text x="-138" y="253" class="mono" font-size="10.5" fill="#6e7189">09:04:38</text>
+    <text x="-82" y="253" class="mono" font-size="12" fill="#c8cadb">+1 743 &#8226;&#8226;09</text>
+    <rect x="64" y="238" width="74" height="20" rx="10" fill="#252a45" stroke="#3d3f60"/>
+    <text x="101" y="252" text-anchor="middle" class="ui" font-size="10.5" fill="#a89ce4">interested</text>
+  </g>
+
+  <g class="row r4">
+    <rect x="-152" y="282" width="304" height="48" rx="9" fill="#1d2036" stroke="#3d3f60"/>
+    <text x="-138" y="311" class="mono" font-size="10.5" fill="#6e7189">09:07:22</text>
+    <text x="-82" y="311" class="mono" font-size="12" fill="#c8cadb">+1 605 &#8226;&#8226;83</text>
+    <rect x="82" y="296" width="56" height="20" rx="10" fill="#2b3154" stroke="#4a4d73"/>
+    <text x="110" y="310" text-anchor="middle" class="ui" font-size="10.5" fill="#cfc8f2">booked</text>
+  </g>
+
+  <text x="-152" y="358" class="mono" font-size="11.5" fill="#6e7189">6 caller IDs <tspan fill="#3d3f60">&#183;</tspan> 09:00 to 19:30 <tspan fill="#3d3f60">&#183;</tspan> <tspan fill="#a89ce4">~300 calls/day</tspan></text>
+</g>
+
+<rect x="56" y="48" width="760" height="356" rx="10" fill="#101220" stroke="#2b2e46"/>
+<path d="M56 84h760" stroke="#2b2e46"/>
+<circle cx="80" cy="66" r="4.5" fill="#343856"/>
+<circle cx="98" cy="66" r="4.5" fill="#343856"/>
+<circle cx="116" cy="66" r="4.5" fill="#9184d9" opacity="0.55"/>
+<text x="140" y="71" class="mono" font-size="13" fill="#6e7189">zsh &#183; tuguidragos@n8n</text>
+
+<g class="mono">
+  <text x="84" y="118" class="p" font-size="17">$</text>
+  <text x="100" y="118" class="cmd" font-size="17">n8n list:workflow</text>
+
+  <text x="100" y="155" class="jb" font-size="24">1|<tspan class="cmd">Agent Final V230626</tspan></text>
+
+  <text x="84" y="191" class="p" font-size="17">$</text>
+  <text x="100" y="191" class="cmd" font-size="17">curl -s https://api.vapi.ai/call/$CALL_ID</text>
+
+  <text x="100" y="221" class="jb" font-size="14.5">{</text>
+
+  <text x="118" y="245" class="jk" font-size="14.5">"status":</text>
+  <text x="256" y="245" class="jv" font-size="14.5">"ended",</text>
+
+  <text x="118" y="269" class="jk" font-size="14.5">"endedReason":</text>
+  <text x="256" y="269" class="jv" font-size="14.5">"customer-ended-call",</text>
+
+  <text x="118" y="293" class="jk" font-size="14.5">"summary":</text>
+  <text x="256" y="293" class="jv" font-size="14.5">"lead qualified, wants a callback",</text>
+
+  <text x="118" y="317" class="jk" font-size="14.5">"outcome":</text>
+  <text x="256" y="317" class="jv" font-size="14.5">"appointment booked in GHL"</text>
+
+  <text x="100" y="341" class="jb" font-size="14.5">}</text>
+
+  <text x="84" y="373" class="p" font-size="17">$</text>
+</g>
+<rect x="100" y="358" width="2.5" height="19" class="cur"/>
+</svg>
